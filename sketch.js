@@ -14,17 +14,17 @@ var score=0;
 var gameOver, restart;
 
 function preload(){
-  kangaroo_running =   loadAnimation("assets/kangaroo1.png","assets/kangaroo2.png","assets/kangaroo3.png");
-  kangaroo_collided = loadAnimation("assets/kangaroo1.png");
-  jungleImage = loadImage("assets/bg.png");
-  shrub1 = loadImage("assets/shrub1.png");
-  shrub2 = loadImage("assets/shrub2.png");
-  shrub3 = loadImage("assets/shrub3.png");
-  obstacle1 = loadImage("assets/stone.png");
-  gameOverImg = loadImage("assets/gameOver.png");
-  restartImg = loadImage("assets/restart.png");
-  jumpSound = loadSound("assets/jump.wav");
-  collidedSound = loadSound("assets/collided.wav");
+  kangaroo_running =   loadAnimation("./assets/kangaroo1.png","./assets/kangaroo2.png","./assets/kangaroo3.png");
+  kangaroo_collided = loadAnimation("./assets/kangaroo1.png");
+  jungleImage = loadImage("./assets/bg.png");
+  shrub1 = loadImage("./assets/shrub1.png");
+  shrub2 = loadImage("./assets/shrub2.png");
+  shrub3 = loadImage("./assets/shrub3.png");
+  obstacle1 = loadImage("./assets/stone.png");
+  gameOverImg = loadImage("./assets/gameOver.png");
+  restartImg = loadImage("./assets/restart.png");
+  jumpSound = loadSound("./assets/jump.wav");
+  collidedSound = loadSound("./assets/collided.wav");
 }
 
 function setup() {
@@ -54,7 +54,7 @@ function setup() {
 function draw() {
   background(255);
 //depure o código abaixo
-  kangaroo.x=camera.positionX-270;
+  kangaroo.x=camera.position.x -270;
   
   if (gameState===PLAY){
 
@@ -109,8 +109,8 @@ function spawnShrubs() {
 
   if (frameCount % 150 === 0) {
 //encontre o bug no código abaixo
-    var shrub = createSprite(camera.position+500,330,40,10);
-   
+    var shrub = createSprite(camera.position.x+500,330,40,10);
+  
 
     shrub.velocityX = -(6 + 3*score/100)
     shrub.scale = 0.6;
@@ -119,8 +119,11 @@ function spawnShrubs() {
     //encontre o bug no código abaixo
     switch(rand) {
       case 1: shrub.addImage(shrub1);
+        break;
       case 2: shrub.addImage(shrub2);
+        break;
       case 3: shrub.addImage(shrub3);
+        break;
       default: break;
     }
          
